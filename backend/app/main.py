@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from .config import settings
 from .database import init_db
+from .routes import *
 
 
 app = FastAPI(
@@ -23,6 +24,9 @@ app.add_middleware(
 
 
 app.mount('/static', StaticFiles(directory=settings.static_dir), name='static')
+
+
+app.include_router(shortener_router)
 
 
 @app.on_event('startup')
