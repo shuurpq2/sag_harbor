@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from ..repos.shortener_repo import ShortenerRepo
+from ..exeptions import shortener_exeptions
 import string
 import random
 
@@ -34,5 +35,8 @@ class ShortenerService:
         return slug
 
 
-    def get_long_url_by_slug(self, slug: str) -> str | None:
-        return self.repo.get_long_url_by_slug(slug=slug)
+    def get_long_url_by_slug(self, slug: str) -> str:
+      long_url = self.repo.get_long_url_by_slug(slug=slug)
+      if not long_url:
+          raise shortener_exeptions.NoLongUrlFoundError()
+      return long_url

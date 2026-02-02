@@ -9,7 +9,7 @@ host = socket.gethostbyname(hostname)
 
 
 script_dir = Path(__file__).parent.absolute()
-db_path = script_dir.parent / 'sag_harbour.db'
+db_path = script_dir.parent / 'sag_harbor.db'
 
 
 class Settings(BaseSettings):
