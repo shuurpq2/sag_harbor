@@ -4,18 +4,18 @@ import { getBackendUrl } from '@/app/api';
 import { redirect } from 'next/navigation';
 
 
-export default async function OpenShortenedURL({ params }) {
+export default async function OpenShortenedUrl({ params }) {
   const {slug} = await params
   const API_URL = getBackendUrl()
-  let longURL = ''
+  let longUrl = ''
   try {
     const response = await axios.get(`${API_URL}/api/shortener/${slug}`)
-    longURL = response.data
+    longUrl = response.data
   } catch {
     null
   } finally {
-    if (longURL) {
-      redirect(longURL)
+    if (longUrl) {
+      redirect(longUrl)
     }
   }
   return (

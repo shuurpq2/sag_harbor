@@ -27,6 +27,7 @@ app.mount('/static', StaticFiles(directory=settings.static_dir), name='static')
 
 
 app.include_router(shortener_router)
+app.include_router(img_converter_router)
 
 
 @app.on_event('startup')

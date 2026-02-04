@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, status, Request, HTTPException
 from ..database import get_db
-from ..services.shortener_services import ShortenerService
+from ..services.shortener_service import ShortenerService
 from sqlalchemy.orm import Session
 from ..exeptions import shortener_exeptions
 
